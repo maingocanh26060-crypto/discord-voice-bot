@@ -2,4 +2,3 @@ discord.py
 edge-tts
 yt-dlp
 PyNaCl
-ffmpeg-python
