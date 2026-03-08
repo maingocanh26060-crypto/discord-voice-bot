@@ -58,7 +58,10 @@ async def say(ctx, *, text):
     tts = edge_tts.Communicate(text, "vi-VN-HoaiMyNeural")
     await tts.save(file)
 
-    voice.play(discord.FFmpegPCMAudio(file))
+    if voice.is_playing():
+    voice.stop()
+
+voice.play(discord.FFmpegPCMAudio(file))
 
 # ----------------
 # PHÁT NHẠC YOUTUBE
@@ -106,4 +109,7 @@ async def guess(ctx):
     else:
         await ctx.send(f"❌ Sai! số là {number}")
 
-bot.run(TOKEN)
+if not TOKEN:
+    print("❌ Chưa có TOKEN trong Railway")
+else:
+    bot.run(TOKEN)
